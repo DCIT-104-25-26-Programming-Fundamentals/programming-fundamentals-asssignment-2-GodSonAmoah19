@@ -40,5 +40,74 @@
 // =============================================================================
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
+
+int getSum(int numbers[], int n) {
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += numbers[i];
+    }
+    return sum;
+}
+
+double getAverage(int numbers[], int n) {
+    int sum = getSum(numbers, n);
+    return static_cast<double>(sum) / n;
+}
+
+int getMaximum(int numbers[], int n) {
+    int maximum = numbers[0];
+    for (int i = 1; i < n; i++) {
+        if (numbers[i] > maximum) {
+            maximum = numbers[i];
+        }
+    }
+    return maximum;
+}
+
+int getMinimum(int numbers[], int n) {
+    int minimum = numbers[0];
+    for (int i = 1; i < n; i++) {
+        if (numbers[i] < minimum) {
+            minimum = numbers[i];
+        }
+    }
+    return minimum;
+}
+
+int main() {
+    int n;
+
+    cout << "How many numbers? ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "Error: N must be a positive integer." << endl;
+        return 0;
+    }
+
+    int numbers[100];
+
+    for (int i = 0; i < n; i++) {
+        cout << "Enter number " << (i + 1) << ": ";
+        cin >> numbers[i];
+    }
+
+    int sum = getSum(numbers, n);
+    double average = getAverage(numbers, n);
+    int maximum = getMaximum(numbers, n);
+    int minimum = getMinimum(numbers, n);
+
+    cout << endl;
+    cout << "Results:" << endl;
+    cout << "Sum:     " << sum << endl;
+    cout << fixed << setprecision(1);
+    cout << "Average: " << average << endl;
+    cout << defaultfloat;
+    cout << "Maximum: " << maximum << endl;
+    cout << "Minimum: " << minimum << endl;
+
+    return 0;
+}
 
