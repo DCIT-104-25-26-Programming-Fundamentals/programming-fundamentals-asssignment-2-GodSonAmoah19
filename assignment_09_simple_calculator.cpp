@@ -71,5 +71,119 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <limits>
 using namespace std;
+
+void addition(double a, double b) {
+    cout << fixed << setprecision(2) << "Result: " << a << " + " << b << " = " << (a + b) << endl;
+}
+
+void subtraction(double a, double b) {
+    cout << fixed << setprecision(2) << "Result: " << a << " - " << b << " = " << (a - b) << endl;
+}
+
+void multiplication(double a, double b) {
+    cout << fixed << setprecision(2) << "Result: " << a << " * " << b << " = " << (a * b) << endl;
+}
+
+void division(double a, double b) {
+    if (b == 0) {
+        cout << "Error: Cannot divide by zero." << endl;
+    } else {
+        cout << fixed << setprecision(2) << "Result: " << a << " / " << b << " = " << (a / b) << endl;
+    }
+}
+
+void modulus(double a, double b) {
+    if (b == 0) {
+        cout << "Error: Cannot divide by zero." << endl;
+    } else {
+        cout << fixed << setprecision(2) << "Result: " << a << " % " << b << " = " << fmod(a, b) << endl;
+    }
+}
+
+void exponentiation(double a, double b) {
+    cout << fixed << setprecision(2) << "Result: " << a << " ^ " << b << " = " << pow(a, b) << endl;
+}
+
+int main() {
+    int choice = 0;
+
+    while (choice != 7) {
+        cout << "\n============================" << endl;
+        cout << "     SIMPLE CALCULATOR" << endl;
+        cout << "============================" << endl;
+        cout << "1. Addition" << endl;
+        cout << "2. Subtraction" << endl;
+        cout << "3. Multiplication" << endl;
+        cout << "4. Division" << endl;
+        cout << "5. Modulus" << endl;
+        cout << "6. Exponentiation" << endl;
+        cout << "7. Quit" << endl;
+        cout << "Select an operation (1-7): ";
+        cin >> choice;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid choice. Please enter a number from 1 to 7." << endl;
+            continue;
+        }
+
+        double a, b;
+
+        switch (choice) {
+        case 1:
+            cout << "Enter first number : ";
+            cin >> a;
+            cout << "Enter second number: ";
+            cin >> b;
+            addition(a, b);
+            break;
+        case 2:
+            cout << "Enter first number : ";
+            cin >> a;
+            cout << "Enter second number: ";
+            cin >> b;
+            subtraction(a, b);
+            break;
+        case 3:
+            cout << "Enter first number : ";
+            cin >> a;
+            cout << "Enter second number: ";
+            cin >> b;
+            multiplication(a, b);
+            break;
+        case 4:
+            cout << "Enter first number : ";
+            cin >> a;
+            cout << "Enter second number: ";
+            cin >> b;
+            division(a, b);
+            break;
+        case 5:
+            cout << "Enter first number : ";
+            cin >> a;
+            cout << "Enter second number: ";
+            cin >> b;
+            modulus(a, b);
+            break;
+        case 6:
+            cout << "Enter first number : ";
+            cin >> a;
+            cout << "Enter second number: ";
+            cin >> b;
+            exponentiation(a, b);
+            break;
+        case 7:
+            cout << "Goodbye!" << endl;
+            break;
+        default:
+            cout << "Invalid choice. Please enter a number from 1 to 7." << endl;
+            break;
+        }
+    }
+
+    return 0;
+}
 
